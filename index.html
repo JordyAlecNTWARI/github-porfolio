@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Jordy Alec — Développeur Web</title>
+  <title>Jordy Alec NTWARI — Développeur Full-Stack</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
@@ -103,13 +103,13 @@
   <div class="container">
     <section class="hero" style="border-top: none;">
       <div class="hero-inner">
-        <div class="hero-tag">Disponible · BTS SIO SLAM</div>
+        <div class="hero-tag">Disponible · Bachelor EPSI Nantes · Alternance</div>
         <h1 class="hero-title">
           Jordy Alec<br>
           <span class="line2">Développeur</span><br>
           <span class="accent">Full-Stack</span>
         </h1>
-        <p class="hero-desc">Développeur full-stack junior spécialisé TypeScript, PHP/Symfony et React. Passé par un stage en fintech et plusieurs projets full-stack, j'entre en Bachelor Développement Full-Stack (alternance) à l'EPSI Nantes en septembre 2026.</p>
+        <p class="hero-desc">Développeur full-stack junior spécialisé TypeScript, PHP/Symfony et React. Après un BTS SIO (SLAM) et un stage en fintech, je suis en Bachelor Développement Full-Stack à l'EPSI Nantes et je recherche une alternance.</p>
         <div class="hero-cta">
           <a href="#projets" class="btn btn-primary">Voir mes projets →</a>
           <a href="#contact" class="btn btn-ghost">Me contacter</a>
@@ -122,30 +122,58 @@
       <h2 class="section-title">Projets récents</h2>
       <div class="projects-grid">
 
-        <!-- ALECONE -->
+        <!-- RESERVATION-APP -->
         <div class="project-card fade-up">
           <div class="project-header">
-            <div class="project-name">AlecOne</div>
-            <span class="project-badge">Projet personnel 2026</span>
+            <div class="project-name">Reservation-app</div>
+            <span class="project-badge">Stage Gauss&amp;Co 2026</span>
           </div>
-          <p class="project-desc">Plateforme full-stack de gestion de ressources éducatives. Backend API REST en Symfony 7, frontend React + TypeScript, authentification JWT, système d'emprunt et back office admin.</p>
+          <p class="project-desc">Application de réservation de créneaux pensée pour la cohérence des données et la résilience. La réponse à l'utilisateur est instantanée : la génération du PDF de confirmation et l'envoi de l'email se font en arrière-plan via une file de messages.</p>
           <div class="project-stack">
-            <span class="stack-tag">PHP / Symfony 7</span>
-            <span class="stack-tag">React</span>
+            <span class="stack-tag">Node.js / Express</span>
             <span class="stack-tag">TypeScript</span>
-            <span class="stack-tag">MySQL</span>
-            <span class="stack-tag">JWT</span>
-            <span class="stack-tag">REST API</span>
-            <span class="stack-tag">Doctrine ORM</span>
+            <span class="stack-tag">PostgreSQL / Prisma</span>
+            <span class="stack-tag">Redis</span>
+            <span class="stack-tag">RabbitMQ</span>
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Vitest</span>
           </div>
           <ul class="project-highlights">
-            <li>API REST complète : ressources, playlists, catégories, emprunts, avis</li>
-            <li>Authentification JWT securisee avec roles (ROLE_USER, ROLE_ADMIN)</li>
-            <li>Frontend React avec routing, context auth et pages admin</li>
-            <li>Back office : tableau de bord, CRUD ressources, gestion des emprunts</li>
+            <li>Unicité des réservations garantie même en requêtes simultanées (contrainte PostgreSQL)</li>
+            <li>Réponse 201 immédiate, découplée du worker (PDF et email en arrière-plan)</li>
+            <li>Cache Redis (30 s) avec invalidation automatique après réservation</li>
+            <li>Rate limiting fail-open + file de retry et dead letter pour les échecs</li>
+            <li>6 fichiers de tests d'intégration sur la vraie stack (API + base + Redis)</li>
           </ul>
           <div class="project-links">
-            <a href="alecone/index.html" class="btn btn-primary">Voir la démo →</a>
+            <span class="btn btn-ghost" style="cursor:default; font-size:12px;">Repo privé (entreprise)</span>
+          </div>
+        </div>
+
+        <!-- TASKFLOW -->
+        <div class="project-card fade-up">
+          <div class="project-header">
+            <div class="project-name">Taskflow</div>
+            <span class="project-badge">Stage Gauss&amp;Co 2026</span>
+          </div>
+          <p class="project-desc">Application de gestion de tâches en kanban (Todo / Doing / Done) avec mise à jour en temps réel : quand un utilisateur crée, déplace ou supprime une tâche, les autres la voient changer en direct, sans recharger la page. Monorepo API Node/Express + client React.</p>
+          <div class="project-stack">
+            <span class="stack-tag">Node.js / Express</span>
+            <span class="stack-tag">TypeScript</span>
+            <span class="stack-tag">React</span>
+            <span class="stack-tag">Socket.IO</span>
+            <span class="stack-tag">JWT</span>
+            <span class="stack-tag">bcrypt</span>
+          </div>
+          <ul class="project-highlights">
+            <li>API REST structurée en couches (routes → controllers → services → repositories)</li>
+            <li>Authentification complète : hachage bcrypt, jetons JWT, middleware de protection</li>
+            <li>Mise à jour temps réel via Socket.IO — les tâches changent en direct sans recharger</li>
+            <li>Gardes de route symétriques (ProtectedRoute / GuestRoute) et session persistée</li>
+            <li>Endpoints testés sous Postman, cas d'erreur inclus (400 / 401 / 404)</li>
+          </ul>
+          <div class="project-links">
+            <span class="btn btn-ghost" style="cursor:default; font-size:12px;">Repo privé (entreprise)</span>
           </div>
         </div>
 
@@ -207,17 +235,21 @@
       <div class="skills-grid">
         <div class="skill-chip fade-up"><span class="skill-dot"></span>TypeScript</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>JavaScript</div>
-        <div class="skill-chip fade-up"><span class="skill-dot"></span>PHP / Symfony</div>
+        <div class="skill-chip fade-up"><span class="skill-dot"></span>Node.js / Express</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>React</div>
+        <div class="skill-chip fade-up"><span class="skill-dot"></span>PHP / Symfony</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>Bun / Hono</div>
+        <div class="skill-chip fade-up"><span class="skill-dot"></span>Socket.IO / WebSocket</div>
+        <div class="skill-chip fade-up"><span class="skill-dot"></span>PostgreSQL / Prisma</div>
+        <div class="skill-chip fade-up"><span class="skill-dot"></span>Redis</div>
+        <div class="skill-chip fade-up"><span class="skill-dot"></span>RabbitMQ</div>
+        <div class="skill-chip fade-up"><span class="skill-dot"></span>MySQL / Doctrine</div>
+        <div class="skill-chip fade-up"><span class="skill-dot"></span>API REST / JWT</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>NX Monorepo</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>Clean Architecture</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>POO / SOLID</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>Git / GitHub</div>
-        <div class="skill-chip fade-up"><span class="skill-dot"></span>MySQL</div>
-        <div class="skill-chip fade-up"><span class="skill-dot"></span>API REST / JWT</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>HTML / CSS</div>
-        <div class="skill-chip fade-up"><span class="skill-dot"></span>Doctrine ORM</div>
         <div class="skill-chip fade-up"><span class="skill-dot"></span>Linux</div>
       </div>
     </section>
@@ -233,12 +265,12 @@
         </div>
         <div class="about-stats">
           <div class="stat-card fade-up">
-            <div class="stat-value">3</div>
+            <div class="stat-value">4</div>
             <div class="stat-label">Projets réalisés</div>
           </div>
           <div class="stat-card fade-up">
             <div class="stat-value">BACHELOR</div>
-            <div class="stat-label">Recherche Alternance septembre 2026</div>
+            <div class="stat-label">En recherche d'alternance</div>
           </div>
           <div class="stat-card fade-up">
             <div class="stat-value">∞</div>
